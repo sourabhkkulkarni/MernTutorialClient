@@ -9,7 +9,7 @@ function App() {
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/readdata')
+    axios.get('https://newmernfullstackapplication.herokuapp.com/readdata')
       .then((res) => {
         console.log("res", res.data);
         setFriends(res.data);
@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   const handleAddFriend = () => {
-    axios.post('http://localhost:3001/addFriend', {
+    axios.post('https://newmernfullstackapplication.herokuapp.com/addFriend', {
       name: name,
       age: age,
     }).then(() => {
@@ -31,7 +31,7 @@ function App() {
 
   const handleUpdate = (id) => {
     const newAge = prompt("Enter new age");
-    axios.put('http://localhost:3001/update', {
+    axios.put('https://newmernfullstackapplication.herokuapp.com/update', {
       newAge: newAge, id: id
     })
       .then(() => {
@@ -43,7 +43,7 @@ function App() {
   }
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/delete/${id}`)
+    axios.delete(`https://newmernfullstackapplication.herokuapp.com/delete/${id}`)
     .then(()=>{
       setFriends(friends.filter((val)=>{
         return val._id !== id
